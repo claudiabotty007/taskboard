@@ -1,0 +1,17 @@
+{
+  "name": "taskboard-node",
+  "version": "1.0.0",
+  "description": "Taskboard - Node.js (Express) backend",
+  "private": true,
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
