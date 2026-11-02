@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="board">
+    <header>
+      <h1>Taskboard</h1>
+      <span id="backend" class="badge">connecting…</span>
+    </header>
+
+    <form id="new-task" autocomplete="off">
+      <input id="title" name="title" maxlength="200" placeholder="What needs doing?" required>
+      <button type="submit">Add</button>
+    </form>
+
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <nav class="filters" aria-label="Filter tasks">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="open" aria-pressed="false">Open</button>
+      <button type="button" data-filter="done" aria-pressed="false">Done</button>
+    </nav>
+
+    <ul id="tasks"></ul>
+    <footer id="summary"></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
