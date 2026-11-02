@@ -32,6 +32,8 @@ function createApp({
 
   api.get('/health', (req, res) => res.json({ status: 'ok', backend: 'node', version }));
 
+  api.get('/stats', (req, res) => res.json(store.stats()));
+
   api.get('/tasks', (req, res) => res.json(store.list(parseBool(req.query.done))));
 
   api.post('/tasks', (req, res) => res.status(201).json(store.add(jsonBody(req).title)));

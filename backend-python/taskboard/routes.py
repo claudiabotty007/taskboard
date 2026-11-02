@@ -47,6 +47,11 @@ def health():
     return jsonify(status="ok", backend="python", version=__version__)
 
 
+@api.get("/stats")
+def stats():
+    return jsonify(_store().stats())
+
+
 @api.get("/tasks")
 def list_tasks():
     done = _parse_bool(request.args.get("done"))

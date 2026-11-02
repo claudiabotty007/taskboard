@@ -79,6 +79,12 @@ class TaskStore {
     this._save();
   }
 
+  stats() {
+    const tasks = this.list();
+    const done = tasks.filter((t) => t.done).length;
+    return { total: tasks.length, done, open: tasks.length - done };
+  }
+
   _load() {
     const data = JSON.parse(fs.readFileSync(this.dataFile, 'utf8'));
     this.tasks = new Map((data.tasks || []).map((t) => [t.id, t]));

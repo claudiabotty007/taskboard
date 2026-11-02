@@ -48,6 +48,13 @@ def test_validation_errors_match(api, payload, error):
     assert resp.json() == {"error": error}
 
 
+def test_stats_counts_tasks(api):
+    ids = [api.post("/tasks", json={"title": title}).json()["id"] for title in ("a", "b", "c")]
+    api.patch(f"/tasks/{ids[0]}", json={"done": True})
+
+    assert api.get("/stats").json() == {"total": 3, "done": 1, "open": 2}
+
+
 def test_unknown_task_error_is_json(api):
     resp = api.get("/tasks/999")
 

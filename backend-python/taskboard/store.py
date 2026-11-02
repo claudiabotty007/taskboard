@@ -105,6 +105,11 @@ class TaskStore:
             self._tasks.clear()
             self._save()
 
+    def stats(self) -> dict:
+        tasks = self.list()
+        done = sum(t.done for t in tasks)
+        return {"total": len(tasks), "done": done, "open": len(tasks) - done}
+
     def _load(self) -> None:
         data = json.loads(self.data_file.read_text(encoding="utf-8"))
         self._tasks = {t["id"]: Task(**t) for t in data.get("tasks", [])}

@@ -42,6 +42,7 @@ Environment variables: `PORT` (default 8000), `HOST` (default 127.0.0.1),
 | Method | Path | Body | Result |
 |---|---|---|---|
 | GET | `/api/health` | | `{"status","backend","version"}` |
+| GET | `/api/stats` | | `{"total","done","open"}` |
 | GET | `/api/tasks?done=true\|false` | | list of tasks |
 | POST | `/api/tasks` | `{"title"}` | 201 + task |
 | DELETE | `/api/tasks` | | 204, removes all tasks |
