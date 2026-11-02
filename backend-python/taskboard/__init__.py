@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 
-from flask import Flask
+from flask import Flask, jsonify, request
 
 from .store import TaskStore
 
@@ -39,5 +39,12 @@ def create_app(config: dict | None = None) -> Flask:
     @app.get("/")
     def index():
         return app.send_static_file("index.html")
+
+    @app.errorhandler(404)
+    def not_found(err):
+        # Unknown /api routes never reach the blueprint's handlers, so answer them here.
+        if request.path.startswith("/api/"):
+            return jsonify(error=f"no such endpoint: {request.method} {request.full_path.rstrip('?')}"), 404
+        return err
 
     return app

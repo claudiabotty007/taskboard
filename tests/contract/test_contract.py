@@ -60,3 +60,11 @@ def test_unknown_task_error_is_json(api):
 
     assert resp.status_code == 404
     assert resp.json() == {"error": "task 999 not found"}
+
+
+@pytest.mark.parametrize("path", ["/nope", "/tasks/abc"])
+def test_unknown_endpoint_error_is_json(api, path):
+    resp = api.get(path)
+
+    assert resp.status_code == 404
+    assert "error" in resp.json()
