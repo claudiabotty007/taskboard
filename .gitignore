@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+
+# Build / CI output
+dist/
+reports/
+
+# Local data & editors
+*.json.tmp
+data/
+.idea/
+.vscode/
+*.log

@@ -1,0 +1,5 @@
+* text=auto
+# Shell scripts must keep LF or they break on Linux agents.
+*.sh  text eol=lf
+*.ps1 text eol=crlf
+Jenkinsfile text eol=lf
